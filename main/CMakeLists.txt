@@ -18,6 +18,6 @@ endif()
 set(Main_SRC main.cpp)
 set(HEADERS)
 add_executable(crawler ${Main_SRC})
-target_link_libraries(crawler  libsim)
+target_link_libraries(crawler  libsim libgui)
 #${Boost_LIBRARIES} ${CMAKE_THREAD_LIBS_INIT}
 install(TARGETS crawler DESTINATION bin)
