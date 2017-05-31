@@ -8,7 +8,6 @@
 #include "vec2.hpp"
 
 class simulator{
-  //const double G = 6.674 * std::pow(10, -11);
   const double G = 6.674 * std::pow(10, -11);
   double timestep = 1;
   double t_start = 0;
@@ -24,4 +23,8 @@ public:
   double step(double timestep);
 
   void add(object obj);
+
+  object& get(std::size_t i){
+    return objects[i];
+  }
 };

@@ -2,6 +2,7 @@
 
 #include <string>
 #include <cmath>
+#include <iostream>
 
 struct vec2{
   double x, y;
@@ -42,12 +43,12 @@ struct vec2{
 
   bool operator==(vec2& rhs){
     double epsilon = 1e-10;
-    return x - rhs.x < epsilon &&  y - rhs.y < epsilon;
+    return std::abs(x - rhs.x) < epsilon &&  std::abs(y - rhs.y) < epsilon;
   }
 
   bool operator==(const vec2& rhs) const{
     double epsilon = 1e-10;
-    return x - rhs.x < epsilon &&  y - rhs.y < epsilon;
+    return std::abs(x - rhs.x) < epsilon &&  std::abs(y - rhs.y) < epsilon;
   }
 
   friend vec2 operator+(vec2 lhs, const vec2& rhs){
@@ -60,8 +61,24 @@ struct vec2{
     return lhs;
   }
 
+  //Might require a const version
+  friend vec2 operator-(vec2 lhs){
+    lhs *= -1;
+    return lhs;
+  }
+
   friend vec2 operator*(vec2 lhs, double v){
     lhs *= v;
+    return lhs;
+  }
+
+  friend vec2 operator*(double v, vec2 rhs){
+    rhs *= v;
+    return rhs;
+  }
+
+  friend vec2 operator/(vec2 lhs, double v){
+    lhs *= 1 / v;
     return lhs;
   }
 };
