@@ -11,8 +11,9 @@ add_library(libgui STATIC
     ${libgui_SRC}
     #${libsim_HEADERS}
 )
+target_link_libraries(libgui ${SDL2_LIBRARY} libsim)
 
 target_include_directories(libgui PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
-    ${SDL2_LIBRARY}
+
 )

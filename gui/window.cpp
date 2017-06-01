@@ -6,19 +6,28 @@ void gui::window::setup_sdl(){
     exit(-1);
   }
 
-  window = SDL_CreateWindow("Simulation", 0, 0, 512, 512, SDL_WINDOW_SHOWN);
-  if(window == nullptr){
+  win = SDL_CreateWindow("Simulation", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, 512, 512, SDL_WINDOW_SHOWN);
+  std::cout << "Create window" << std::endl;
+  if(win == nullptr){
     std::cout << "SDL could not create window" << std::endl;
     SDL_Quit();
     exit(-1);
   }
 
-  renderer = SDL_CreateRenderer(window, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
+  renderer = SDL_CreateRenderer(win, -1, SDL_RENDERER_ACCELERATED | SDL_RENDERER_PRESENTVSYNC);
   if(renderer == nullptr){
     std::cout << "SDL could not create renderer" << std::endl;
     SDL_Quit();
     exit(-1);
   }
+
+  //SDL_Delay(100);
+  SDL_RenderClear(renderer);
+  SDL_SetRenderDrawColor(renderer, 200, 0, 0, 255);
+  //SDL_RenderFillRect(renderer, NULL);
+  //drawRect(gui::rect(200,200, 50,50));
+  SDL_RenderPresent(renderer);
+  //SDL_Delay(2500);
 }
 
 void gui::window::drawRect(gui::rect rect){
@@ -31,4 +40,5 @@ void gui::window::drawRect(gui::rect rect){
   if((err = SDL_RenderDrawRect(renderer, &sdl_rect)) != 0){
     throw std::string("Could not draw rect, errorcode: " + std::to_string(err));
   }
+  SDL_RenderPresent(renderer);
 }
