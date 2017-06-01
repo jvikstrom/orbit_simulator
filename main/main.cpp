@@ -1,6 +1,7 @@
 #include <iostream>
 #include <cmath>
 #include "simulator.hpp"
+#include "simulation_display.hpp"
 #include "object.hpp"
 #include "window.hpp"
 
@@ -15,16 +16,10 @@ int main(){
   sim.add(earth);
   sim.add(obj);
 
-  gui::window win;
-  win.drawRect(gui::rect(vec2(250,250), vec2(12,12)));
-  int i = 0;
-  double p = std::pow(10, 6);
-  while(sim.step(i % resolution == 0) < end){
-    object& obj = sim.get(1);
-    if(i++ % resolution == 0){
-      win.drawRect(gui::rect(obj.position / p + vec2(256,256), vec2(5,5)));
-    }
-  }
+  gui::simulation_display disp(resolution, std::pow(10, 6), sim);
+  disp.track("earth", gui::track_settings(true, vec2(12, 12)));
+  disp.track("rocket", gui::track_settings(false, vec2(5,5)));
+  disp.run();
 
   int q;
   std::cin >> q;

@@ -20,6 +20,8 @@ namespace gui{
     window(){setup_sdl();}
     ~window(){ SDL_DestroyWindow(win); SDL_Quit(); }
     void drawRect(gui::rect rect);
+    double get_width(){ return 512; }
+    double get_height(){ return 512; }
   };
 }
 

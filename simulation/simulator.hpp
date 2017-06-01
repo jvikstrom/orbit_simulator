@@ -36,7 +36,7 @@ public:
     throw std::string("Couldn't find object with name: " + name);
   }
 
-  double getEnd(){
+  double get_end(){
     return t_end;
   }
 };
