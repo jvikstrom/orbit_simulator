@@ -19,12 +19,24 @@ public:
   simulator(double t_start, double t_end, double timestep) : timestep(timestep), t_start(t_start), t_end(t_end){
     t = t_start;
   }
-  double step();
-  double step(double timestep);
+  double step(bool debug = false);
+  double step(double timestep, bool debug = false);
 
   void add(object obj);
 
   object& get(std::size_t i){
     return objects[i];
+  }
+  object& get(std::string name){
+    for(int i = 0; i < objects.size(); i++){
+      if(objects[i].name == name){
+        return objects[i];
+      }
+    }
+    throw std::string("Couldn't find object with name: " + name);
+  }
+
+  double getEnd(){
+    return t_end;
   }
 };
