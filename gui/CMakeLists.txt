@@ -2,7 +2,8 @@ set(libgui_SRC
 window.hpp
 window.cpp
 simulation_display.hpp
-simulation_display.cpp)
+simulation_display.cpp
+shape.hpp)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} "${CMAKE_CURRENT_SOURCE_DIR}/cmake/Modules/")
 

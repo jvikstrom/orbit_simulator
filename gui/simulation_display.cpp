@@ -13,27 +13,39 @@ vec2 gui::simulation_display::position_to_screenposition(vec2 position){
 }
 
 void gui::simulation_display::draw(){
+  win.clear();
   for(std::pair<int,track_settings> entry : tracked_indexes){
     object& obj = sim.get(entry.first);
-    win.drawRect(gui::rect(position_to_screenposition(obj.position), entry.second.size));
+    //entry.second.sh->position = position_to_screenposition(entry.second.sh->position);
+    win.draw(entry.second.sh, position_to_screenposition(obj.position));
   }
   for(std::pair<std::string, track_settings> entry : tracked_names){
     object& obj = sim.get(entry.first);
-    win.drawRect(gui::rect(position_to_screenposition(obj.position), entry.second.size));
+//    win.drawRect(gui::rect(position_to_screenposition(obj.position), entry.second.size), entry.second.col);
+    //win.draw_circle(gui::circle(position_to_screenposition(obj.position), entry.second.size), entry.second.col);
+    //entry.second.sh->position = position_to_screenposition(entry.second.sh->position);
+    win.draw(entry.second.sh, position_to_screenposition(obj.position));
   }
+  win.update();
 }
 
 void gui::simulation_display::run(){
   for(std::pair<int,track_settings> entry : tracked_indexes){
     if(entry.second.draw_once){
       object& obj = sim.get(entry.first);
-      win.drawRect(gui::rect(position_to_screenposition(obj.position), entry.second.size));
+//      win.drawRect(gui::rect(position_to_screenposition(obj.position), entry.second.size), entry.second.col);
+        //win.draw_circle(gui::circle(position_to_screenposition(obj.position), entry.second.size), entry.second.col);
+        //entry.second.sh->position = position_to_screenposition(entry.second.sh->position);
+        win.draw(entry.second.sh, position_to_screenposition(obj.position));
     }
   }
   for(std::pair<std::string, track_settings> entry : tracked_names){
     if(entry.second.draw_once){
       object& obj = sim.get(entry.first);
-      win.drawRect(gui::rect(position_to_screenposition(obj.position), entry.second.size));
+//      win.drawRect(gui::rect(position_to_screenposition(obj.position), entry.second.size), entry.second.col);
+      //win.draw_circle(gui::circle(position_to_screenposition(obj.position), entry.second.size), entry.second.col);
+      //entry.second.sh->position = position_to_screenposition(entry.second.sh->position);
+      win.draw(entry.second.sh, position_to_screenposition(obj.position));
     }
   }
 

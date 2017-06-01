@@ -5,12 +5,15 @@
 #include "logger.hpp"
 #include "window.hpp"
 #include "simulator.hpp"
+#include "color.hpp"
+#include "rect.hpp"
+#include "circle.hpp"
 
 namespace gui{
   struct track_settings{
     bool draw_once = false;
-    vec2 size;
-    track_settings(bool draw_once = false, vec2 size = vec2(10,10)) : draw_once(draw_once), size(size){}
+    shape* sh;
+    track_settings(shape * sh, bool draw_once = false) : draw_once(draw_once), sh(sh){}
   };
   class simulation_display{
     window win;
