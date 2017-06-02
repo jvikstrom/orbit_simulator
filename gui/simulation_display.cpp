@@ -18,7 +18,7 @@ void gui::simulation_display::draw(){
     object& obj = sim.get(entry.first);
     shape* sh = entry.second.sh;
     if(entry.second.scale){
-      //std::cout << obj.name << ", radius::" << sh->size.to_string() << ", " << sh->get_real_size().to_string()<< std::endl;
+      //jjstd::cout << obj.name << ", radius::" << sh->size.to_string() << ", " << sh->get_real_size().to_string()<< std::endl;
       /*if(sh->size.x < std::pow(10, 3)){
         std::cout << "Size mutating: " << obj.name << std::endl;
         exit(-1);
