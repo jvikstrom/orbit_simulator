@@ -15,6 +15,7 @@ namespace gui{
     shape* sh;
     track_settings(shape * sh, bool scale = true) : scale(scale), sh(sh){}
   };
+  
   class simulation_display{
     window win;
     std::vector<std::pair<int, track_settings>> tracked_indexes;
@@ -22,6 +23,7 @@ namespace gui{
     int resolution = 1;
     double divide = 1;
     simulator sim;
+
     vec2 position_to_screenposition(vec2 position);
     void draw();
   public:

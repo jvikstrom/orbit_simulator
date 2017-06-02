@@ -7,7 +7,8 @@
 #include "color.hpp"
 #include "circle.hpp"
 #include "rect.hpp"
-//TODO: Make the "models" be scaled with the size variable as well.
+
+void add_sol_system(simulator& sim);
 int main(){
   int resolution = 1000;
   double size_increase_fac = 20;
@@ -18,18 +19,7 @@ int main(){
   double sun_radius = size_increase_fac * 6.963 * std::pow(10,8);
 
   simulator sim(0, end, 1);
-  object earth(vec2(0,0), vec2(0,0), 5.972 * std::pow(10,24));
-  earth.name = "earth";
-  object moon(vec2(384*std::pow(10, 6)), vec2(0, 1.022*std::pow(10, 3)), 7.342 * std::pow(10, 22));
-  moon.name = "moon";
-  object obj(vec2(36 * std::pow(10, 6), 0), vec2(0, 3.07 * 1000), 10);
-  obj.name = "rocket";
-  object sun(vec2(1.44 * std::pow(10, 11), 0), vec2(0,0), 1.989*std::pow(10, 30));
-  sun.name = "sun";
-  sim.add(sun);
-  sim.add(earth);
-  sim.add(moon);
-  sim.add(obj);
+  add_sol_system(sim);
 
   gui::simulation_display disp(resolution, size, sim);
   gui::shape* earth_rend = new gui::circle(vec2(earth_radius,earth_radius), gui::color(0,0,255));
@@ -47,4 +37,19 @@ int main(){
   delete rocket_rend;
   int q;
   std::cin >> q;
+}
+
+void add_sol_system(simulator& sim){
+  object earth(vec2(0,0), vec2(0,0), 5.972 * std::pow(10,24));
+  earth.name = "earth";
+  object moon(vec2(384*std::pow(10, 6)), vec2(0, 1.022*std::pow(10, 3)), 7.342 * std::pow(10, 22));
+  moon.name = "moon";
+  object obj(vec2(36 * std::pow(10, 6), 0), vec2(0, 3.07 * 1000), 10);
+  obj.name = "rocket";
+  object sun(vec2(1.44 * std::pow(10, 11), 0), vec2(0,0), 1.989*std::pow(10, 30));
+  sun.name = "sun";
+  sim.add(sun);
+  sim.add(earth);
+  sim.add(moon);
+  sim.add(obj);
 }
