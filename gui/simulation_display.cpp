@@ -16,13 +16,33 @@ void gui::simulation_display::draw(){
   win.clear();
   for(std::pair<int,track_settings> entry : tracked_indexes){
     object& obj = sim.get(entry.first);
-    //shape sh = &entry.second.sh;
-    //sh.size /=
-    win.draw(entry.second.sh, position_to_screenposition(obj.position));
+    shape* sh = entry.second.sh;
+    if(entry.second.scale){
+      //std::cout << obj.name << ", radius::" << sh->size.to_string() << ", " << sh->get_real_size().to_string()<< std::endl;
+      /*if(sh->size.x < std::pow(10, 3)){
+        std::cout << "Size mutating: " << obj.name << std::endl;
+        exit(-1);
+      }*/
+
+      sh->size = sh->get_real_size() / divide;
+    }
+    win.draw(sh, position_to_screenposition(obj.position));
   }
   for(std::pair<std::string, track_settings> entry : tracked_names){
     object& obj = sim.get(entry.first);
-    win.draw(entry.second.sh, position_to_screenposition(obj.position));
+    shape* sh = entry.second.sh;
+    if(entry.second.scale){
+      //std::cout << obj.name << ", radius::" << sh->size.to_string() << ", " << sh->get_real_size().to_string()<<  std::endl;
+      /*if(sh->size.x < std::pow(10, 3)){
+        std::cout << "Size mutating: " << obj.name << std::endl;
+        exit(-1);
+      }*/
+
+
+      sh->size = sh->get_real_size() / divide;
+    }
+
+    win.draw(sh, position_to_screenposition(obj.position));
   }
   win.update();
 }

@@ -51,6 +51,12 @@ struct vec2{
     return std::abs(x - rhs.x) < epsilon &&  std::abs(y - rhs.y) < epsilon;
   }
 
+  vec2& operator/=(double d){
+    x /= d;
+    y /= d;
+    return *this;
+  }
+
   friend vec2 operator+(vec2 lhs, const vec2& rhs){
     lhs += rhs;
     return lhs;
