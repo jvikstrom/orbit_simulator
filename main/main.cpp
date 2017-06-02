@@ -7,7 +7,7 @@
 #include "color.hpp"
 #include "circle.hpp"
 #include "rect.hpp"
-
+//TODO: Make the "models" be scaled with the size variable as well.
 int main(){
   int resolution = 1000;
   double size = std::pow(10, 7) / 4;
@@ -25,8 +25,8 @@ int main(){
   sim.add(obj);
 
   gui::simulation_display disp(resolution, size, sim);
-  gui::shape* earth_rend = new gui::circle(vec2(12,12), gui::color(0,0,255));
-  gui::shape* moon_rend = new gui::circle(vec2(8,8), gui::color(255,255,255));
+  gui::shape* earth_rend = new gui::circle(vec2(7,7), gui::color(0,0,255));
+  gui::shape* moon_rend = new gui::circle(vec2(3,3), gui::color(255,255,255));
   gui::shape* rocket_rend = new gui::rect(vec2(5,5), gui::color(255,255,255));
   disp.track("earth", gui::track_settings(earth_rend, true));
   disp.track("rocket", gui::track_settings(rocket_rend, false));

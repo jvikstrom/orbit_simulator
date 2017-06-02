@@ -11,6 +11,7 @@ namespace gui{
   public:
     circle(vec2 size = vec2(2,2), color col = color()) : size(size), col(col){}
     virtual void draw(vec2 position, SDL_Renderer* renderer){
+      position += size / 2;
       SDL_SetRenderDrawColor(renderer, col.r, col.g, col.b, 255);
       unsigned int r = size.x;
       for(unsigned int x = 0; x < r * 2; x++){
