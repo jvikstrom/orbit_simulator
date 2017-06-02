@@ -6,10 +6,9 @@
 
 namespace gui{
   class rect : public shape{
-    vec2 size;
     color col;
   public:
-    rect(vec2 size = vec2(2,2), color col = color()) : size(size), col(col){}
+    rect(vec2 size = vec2(2,2), color col = color()) : shape(size), col(col){}
     virtual void draw(vec2 position, SDL_Renderer* renderer){
       struct SDL_Rect sdl_rect;
       sdl_rect.x = position.x;

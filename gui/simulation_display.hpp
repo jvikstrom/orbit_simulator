@@ -11,9 +11,9 @@
 
 namespace gui{
   struct track_settings{
-    bool draw_once = false;
+    bool scale_model = false;
     shape* sh;
-    track_settings(shape * sh, bool draw_once = false) : draw_once(draw_once), sh(sh){}
+    track_settings(shape * sh, bool scale_model = true) : scale_model(scale_model), sh(sh){}
   };
   class simulation_display{
     window win;

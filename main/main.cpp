@@ -20,6 +20,9 @@ int main(){
   moon.name = "moon";
   object obj(vec2(36 * std::pow(10, 6), 0), vec2(0, 3.07 * 1000), 10);
   obj.name = "rocket";
+  object sun(vec2(-1.44 * std::pow(10, 11), 0), vec2(0,0), 1.989*std::pow(10, 30));
+  sun.name = "sun";
+  sim.add(sun);
   sim.add(earth);
   sim.add(moon);
   sim.add(obj);
@@ -30,7 +33,7 @@ int main(){
   gui::shape* rocket_rend = new gui::rect(vec2(5,5), gui::color(255,255,255));
   disp.track("earth", gui::track_settings(earth_rend, true));
   disp.track("rocket", gui::track_settings(rocket_rend, false));
-  disp.track("moon", gui::track_settings(moon_rend, false));
+  disp.track("moon", gui::track_settings(moon_rend, true));
   disp.run();
 
   delete earth_rend;

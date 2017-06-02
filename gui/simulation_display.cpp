@@ -16,6 +16,8 @@ void gui::simulation_display::draw(){
   win.clear();
   for(std::pair<int,track_settings> entry : tracked_indexes){
     object& obj = sim.get(entry.first);
+    //shape sh = &entry.second.sh;
+    //sh.size /=
     win.draw(entry.second.sh, position_to_screenposition(obj.position));
   }
   for(std::pair<std::string, track_settings> entry : tracked_names){
@@ -26,19 +28,6 @@ void gui::simulation_display::draw(){
 }
 
 void gui::simulation_display::run(){
-  for(std::pair<int,track_settings> entry : tracked_indexes){
-    if(entry.second.draw_once){
-      object& obj = sim.get(entry.first);
-      win.draw(entry.second.sh, position_to_screenposition(obj.position));
-    }
-  }
-  for(std::pair<std::string, track_settings> entry : tracked_names){
-    if(entry.second.draw_once){
-      object& obj = sim.get(entry.first);
-      win.draw(entry.second.sh, position_to_screenposition(obj.position));
-    }
-  }
-
   int i = 0;
   while(sim.step(i % resolution == 0) < sim.get_end()){
     if(i++ % resolution == 0){

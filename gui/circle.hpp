@@ -6,10 +6,9 @@
 
 namespace gui{
   class circle : public shape{
-    vec2 size;
     color col;
   public:
-    circle(vec2 size = vec2(2,2), color col = color()) : size(size), col(col){}
+    circle(vec2 size = vec2(2,2), color col = color()) : shape(size), col(col){}
     virtual void draw(vec2 position, SDL_Renderer* renderer){
       position += size / 2;
       SDL_SetRenderDrawColor(renderer, col.r, col.g, col.b, 255);

@@ -28,7 +28,7 @@ public:
     return objects[i];
   }
   object& get(std::string name){
-    for(int i = 0; i < objects.size(); i++){
+    for(std::size_t i = 0; i < objects.size(); i++){
       if(objects[i].name == name){
         return objects[i];
       }
