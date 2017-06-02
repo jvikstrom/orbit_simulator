@@ -12,9 +12,9 @@ namespace gui{
     virtual void draw(vec2 position, SDL_Renderer* renderer){
       position += size / 2;
       SDL_SetRenderDrawColor(renderer, col.r, col.g, col.b, 255);
-      unsigned int r = size.x;
-      for(unsigned int x = 0; x < r * 2; x++){
-        for(unsigned int y = 0; y < r * 2; y++){
+      int r = size.x;
+      for(int x = 0; x < r * 2; x++){
+        for(int y = 0; y < r * 2; y++){
           int dx = r - x, dy = r - y;
           if(dx*dx + dy*dy <= r * r){
             SDL_RenderDrawPoint(renderer, position.x + dx, position.y + dy);

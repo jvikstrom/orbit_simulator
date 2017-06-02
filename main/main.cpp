@@ -11,7 +11,7 @@
 int main(){
   int resolution = 1000;
   double size_increase_fac = 20;
-  double size = std::pow(10, 9) ;
+  double size = std::pow(10, 9);
   double end = 365*24*3600;
   double earth_radius = size_increase_fac * 6.371 * std::pow(10, 6);
   double moon_radius = size_increase_fac * 1.737 * std::pow(10, 6);
