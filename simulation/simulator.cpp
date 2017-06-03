@@ -23,6 +23,7 @@ double simulator::step(double timstep, bool debug){
     obj.step(timestep);
 
     if(debug){
+      //logger::i(obj.name, obj.velocity.to_string());
       logger::i(obj.name, obj.position.to_string());
     }
   }
